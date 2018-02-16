@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Page Title</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+  <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
+  />
+  <script>
+    $(document).ready(function () {
+      var date_input = $('input[name="date"]'); //our date input has the name "date"
+      var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+      var options = {
+        format: 'mm/dd/yyyy',
+        container: container,
+        todayHighlight: true,
+        autoclose: true,
+      };
+      date_input.datepicker(options);
+    })
+
+    function fun() {
+
+      var fn = $("#fn").val()
+      var mn = $("#mn").val()
+      var ln = $("#ln").val()
+      var phone = $("#phone").val()
+      var add1 = $("#add1").val()
+      var add2 = $("#add2").val()
+      var city = $("#city").val()
+      var state = $("#state").val()
+      var zip = $("#zip").val()
+      var date = $("#date").val()
+      var ssn = $("#ssn").val()
+      var es = $("#es").val()
+      var income = $("#income").val()
+      var ta = $("#ta").val()
+      var rent = $("#rent").val()
+      alert("hello" + fn+mn+ln+phone+add1+add2+city+state+zip+date+ssn+es+income+ta+rent)
+    }
+  </script>
+</head>
+
+<body>
+  <div style="height:15%;width:20%;margin-left: auto;margin-right: auto">
+    <h1>Ondot Credit Card Application</h1>
+  </div><br></br>
+
+
+  <div id="container" style="height:auto;width:50%;margin-left: auto;margin-right: auto">
+    <div class="form-group">
+      <label for="usr">First Name:</label>
+      <input type="text" class="form-control" id="fn">
+    </div>
+    <div class="form-group">
+      <label for="usr">Middle Name:</label>
+      <input type="text" class="form-control" id="mn">
+    </div>
+    <div class="form-group">
+      <label for="usr">Last Name:</label>
+      <input type="text" class="form-control" id="ln">
+    </div>
+    <div class="form-group">
+      <label for="usr">Phone:</label>
+      <input type="text" class="form-control" id="phone">
+    </div>
+    <div class="form-group">
+      <label for="usr">Address1:</label>
+      <input type="text" class="form-control" id="add1">
+    </div>
+    <div class="form-group">
+      <label for="usr">Address2:</label>
+      <input type="text" class="form-control" id="add2">
+    </div>
+    <div class="form-group">
+      <label for="usr">City:</label>
+      <input type="text" class="form-control" id="city">
+    </div>
+    <div class="form-group">
+      <label for="usr">State:</label>
+      <input type="text" class="form-control" id="state">
+    </div>
+    <div class="form-group">
+      <label for="usr">Zip:</label>
+      <input type="text" class="form-control" id="zip">
+    </div>
+    <div class="bootstrap-iso">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-xs-12">
+
+
+            <!-- Date input -->
+            <label for="usr">Date of Birth</label>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+
+
+          </div>
+        </div>
+      </div>
+    </div><br/>
+    <div class="form-group">
+      <label for="usr">SSN:</label>
+      <input type="text" class="form-control" id="ssn">
+    </div>
+    <div class="form-group">
+      <label for="usr">Employment Status:</label>
+      <input type="text" class="form-control" id="es">
+    </div>
+    <div class="form-group">
+      <label for="usr">Income:</label>
+      <input type="text" class="form-control" id="income">
+    </div>
+    <div class="form-group">
+      <label for="usr">Rent:</label>
+      <input type="text" class="form-control" id="rent">
+    </div>
+    <div class="form-group">
+      <label for="usr">Total Assets:</label>
+      <input type="text" class="form-control" id="ta">
+    </div>
+    <br>
+    <div style="height:50px;width:50%;margin-right: auto;margin-left: auto">
+      <input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:50%;margin-right: auto;margin-left: auto"
+        onclick="fun()" />
+    </div>
+
+  </div>
+  <br><br><br><br>
+
+</body>
+
+</html>
