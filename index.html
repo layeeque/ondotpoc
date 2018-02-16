@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
   />
   <script>
+    var datam
     $(document).ready(function () {
       var date_input = $('input[name="date"]'); //our date input has the name "date"
       var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
@@ -47,15 +48,71 @@
       var income = $("#income").val()
       var ta = $("#ta").val()
       var rent = $("#rent").val()
-      alert("hello" + fn+mn+ln+phone+add1+add2+city+state+zip+date+ssn+es+income+ta+rent)
+      datam={
+        "fn":fn
+        //,
+        // "ln":ln,
+        // "mn":mn,
+        // "phone":phone,
+        // "add1":add1,
+        // "add2":add2,
+        // "city":city,
+        // "state":state,
+        // "date":date,
+        // "zip":zip,
+        // "ssn":ssn,
+        // "es":es,
+        // "income":income,
+        // "ta":ta,
+        // "rent":rent
+      }
+      alert("hello" + fn + mn + ln + phone + add1 + add2 + city + state + zip + date + ssn + es + income + ta + rent)
+      document.getElementById("container").style.display = "none";
+
+      document.getElementById("confirmation").innerHTML = "<h1>Your details are as follows</h1><br/>" +
+        "First Name: " + fn + "<br/><br/>" +
+        "Middle Name: " + mn + "<br/><br/>" +
+        "Last Name: " + ln + "<br/><br/>" +
+        "Phone: " + phone + "<br/><br/>" +
+        "Address 1: " + add1 + "<br/><br/>" +
+        "Address 2: " + add2 + "<br/><br/>" +
+        "City: " + city + "<br/><br/>" +
+        "Zip: " + zip + "<br><br/>" +
+        "Date OF Birth: " + date + "<br/><br/>" +
+        "SSN: " + ssn + "<br/><br/>" +
+        "Employment Status: " + es + "<br/><br/>" +
+        "Total Asset: " + ta + "<br/><br/>" +
+        "Rent: " + rent + "<br/><br/>" +
+        '<input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:50%;margin-right: auto;margin-left: auto" onclick="fun2()"/>'
+
+    }
+
+
+    function fun2() {
+      URL = "http://127.0.0.1:8000/echo"
+
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+      xmlhttp.open("POST", URL, false);
+      xmlhttp.setRequestHeader("Content-Type", "application/json");
+      xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); //in prod, you should encrypt user name and password and provide encrypted keys here instead 
+      xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+      xmlhttp.send(datam);
+
+      document.getElementById("summary").innerHTML = xmlhttp.responseText
+    }
+    function callbackFunction(xmlhttp) {
+      //alert(xmlhttp.responseXML);
     }
   </script>
 </head>
 
 <body>
-  <div style="height:15%;width:20%;margin-left: auto;margin-right: auto">
+
+  <div style="height:15%;width:50%;margin-left: auto;margin-right: auto;color:orange">
     <h1>Ondot Credit Card Application</h1>
-  </div><br></br>
+  </div>
+  <hr style="height:30%"><br></br>
 
 
   <div id="container" style="height:auto;width:50%;margin-left: auto;margin-right: auto">
@@ -137,6 +194,7 @@
     </div>
 
   </div>
+  <div id="confirmation" style="height:50px;width:50%;margin-right: auto;margin-left: auto"></div>
   <br><br><br><br>
 
 </body>
