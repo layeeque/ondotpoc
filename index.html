@@ -48,8 +48,8 @@
       var income = $("#income").val()
       var ta = $("#ta").val()
       var rent = $("#rent").val()
-      datam={
-        "fn":fn
+      datam = {
+        "fn": fn
         //,
         // "ln":ln,
         // "mn":mn,
@@ -67,6 +67,9 @@
         // "rent":rent
       }
       alert("hello" + fn + mn + ln + phone + add1 + add2 + city + state + zip + date + ssn + es + income + ta + rent)
+      if (document.getElementById("confirmation").style.display === "none") {
+        document.getElementById("confirmation").style.display = "block";
+    } 
       document.getElementById("container").style.display = "none";
 
       document.getElementById("confirmation").innerHTML = "<h1>Your details are as follows</h1><br/>" +
@@ -83,13 +86,20 @@
         "Employment Status: " + es + "<br/><br/>" +
         "Total Asset: " + ta + "<br/><br/>" +
         "Rent: " + rent + "<br/><br/>" +
-        '<input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:50%;margin-right: auto;margin-left: auto" onclick="fun2()"/>'
+        '<input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:50%;margin-right: auto;margin-left: auto" onclick="fun2()"/>' +
+        '<input type="button" class="btn btn-danger" value="Edit" style="height:50px;width:50%;margin-right: auto;margin-left: auto" onclick="fun3()"/>'
+
+    }
+    function fun3() {
+      document.getElementById("confirmation").style.display = "none";
+      document.getElementById("container").style.display = "block";
 
     }
 
 
     function fun2() {
-      URL = "http://127.0.0.1:8000/echo"
+      URL = "http://bea34f12.ngrok.io/echo"
+      datam = JSON.stringify(datam);
 
       var xmlhttp = new XMLHttpRequest();
       xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
@@ -98,8 +108,10 @@
       xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); //in prod, you should encrypt user name and password and provide encrypted keys here instead 
       xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
       xmlhttp.send(datam);
+      document.getElementById("confirmation").style.display = "none";
+      var msg = JSON.parse(xmlhttp.responseText)
 
-      document.getElementById("summary").innerHTML = xmlhttp.responseText
+      document.getElementById("congrats").innerHTML = "<h1 style='color:green'>" + msg.speech + "</h1>"
     }
     function callbackFunction(xmlhttp) {
       //alert(xmlhttp.responseXML);
@@ -118,39 +130,39 @@
   <div id="container" style="height:auto;width:50%;margin-left: auto;margin-right: auto">
     <div class="form-group">
       <label for="usr">First Name:</label>
-      <input type="text" class="form-control" id="fn">
+      <input type="text" class="form-control" id="fn" required="required">
     </div>
     <div class="form-group">
       <label for="usr">Middle Name:</label>
-      <input type="text" class="form-control" id="mn">
+      <input type="text" class="form-control" id="mn" required="required">
     </div>
     <div class="form-group">
       <label for="usr">Last Name:</label>
-      <input type="text" class="form-control" id="ln">
+      <input type="text" class="form-control" id="ln" required="required">
     </div>
     <div class="form-group">
       <label for="usr">Phone:</label>
-      <input type="text" class="form-control" id="phone">
+      <input type="text" class="form-control" id="phone" required="required">
     </div>
     <div class="form-group">
       <label for="usr">Address1:</label>
-      <input type="text" class="form-control" id="add1">
+      <input type="text" class="form-control" id="add1" required="required">
     </div>
     <div class="form-group">
       <label for="usr">Address2:</label>
-      <input type="text" class="form-control" id="add2">
+      <input type="text" class="form-control" id="add2" required="required">
     </div>
     <div class="form-group">
       <label for="usr">City:</label>
-      <input type="text" class="form-control" id="city">
+      <input type="text" class="form-control" id="city" required="required">
     </div>
     <div class="form-group">
       <label for="usr">State:</label>
-      <input type="text" class="form-control" id="state">
+      <input type="text" class="form-control" id="state" required="required">
     </div>
     <div class="form-group">
       <label for="usr">Zip:</label>
-      <input type="text" class="form-control" id="zip">
+      <input type="text" class="form-control" id="zip" required="required">
     </div>
     <div class="bootstrap-iso">
       <div class="container-fluid">
@@ -160,7 +172,7 @@
 
             <!-- Date input -->
             <label for="usr">Date of Birth</label>
-            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" />
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" required="required"/>
 
 
           </div>
@@ -169,11 +181,11 @@
     </div><br/>
     <div class="form-group">
       <label for="usr">SSN:</label>
-      <input type="text" class="form-control" id="ssn">
+      <input type="text" class="form-control" id="ssn" required="required">
     </div>
     <div class="form-group">
       <label for="usr">Employment Status:</label>
-      <input type="text" class="form-control" id="es">
+      <input type="text" class="form-control" id="es" >
     </div>
     <div class="form-group">
       <label for="usr">Income:</label>
@@ -195,6 +207,8 @@
 
   </div>
   <div id="confirmation" style="height:50px;width:50%;margin-right: auto;margin-left: auto"></div>
+  </div>
+  <div id="congrats" style="height:50px;width:50%;margin-right: auto;margin-left: auto"></div>
   <br><br><br><br>
 
 </body>
