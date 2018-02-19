@@ -34,20 +34,95 @@
 
     function fun() {
       var fn = $("#fn").val()
+      if(fn == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>First Name is empty</h1>";
+        return;
+        }
       var mn = $("#mn").val()
+        if(mn == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Middle Name is empty</h1>";
+        return;
+        }
       var ln = $("#ln").val()
+        if(ln == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Last Name is empty</h1>";
+        return;
+        }
       var phone = $("#phone").val()
+        if(phone == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Phone is empty</h1>";
+        return;
+        }
       var add1 = $("#add1").val()
+        if(add1 == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Add1 is empty</h1>";
+        return;
+        }
       var add2 = $("#add2").val()
+        if(add2 == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Add2 is empty</h1>";
+        return;
+        }
       var city = $("#city").val()
+        if(city == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>City is empty</h1>";
+        return;
+        }
       var state = $("#state").val()
+        if(state == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>state is empty</h1>";
+        return;
+        }
       var zip = $("#zip").val()
+        if(zip == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>ZIP is empty</h1>";
+        return;
+        }
       var date = $("#date").val()
+        if(date == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Date is empty</h1>";
+        return;
+        }
       var ssn = $("#ssn").val()
+        if(ssn == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>SSN Name is empty</h1>";
+        return;
+        }
       var es = $("#es").val()
+        if(es == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Employment status is empty</h1>";
+        return;
+        }
       var income = $("#income").val()
+        if(income == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Income is empty</h1>";
+        return;
+        }
       var ta = $("#ta").val()
+        if(ta == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Total Asset is empty</h1>";
+        return;
+        }
       var rent = $("#rent").val()
+        if(rent == "")
+      {
+        document.getElementById("errors").innerHTML = "<h1 style='color:red'>Rent is empty</h1>";
+        return;
+        }
       datam = {
         "fn": fn
         //,
@@ -69,7 +144,7 @@
       alert("hello" + fn + mn + ln + phone + add1 + add2 + city + state + zip + date + ssn + es + income + ta + rent)
       if (document.getElementById("confirmation").style.display === "none") {
         document.getElementById("confirmation").style.display = "block";
-    } 
+      }
       document.getElementById("container").style.display = "none";
 
       document.getElementById("confirmation").innerHTML = "<h1>Your details are as follows</h1><br/>" +
@@ -113,6 +188,7 @@
 
       document.getElementById("congrats").innerHTML = "<h1 style='color:green'>" + msg.speech + "</h1>"
     }
+  
     function callbackFunction(xmlhttp) {
       //alert(xmlhttp.responseXML);
     }
@@ -130,11 +206,11 @@
   <div id="container" style="height:auto;width:50%;margin-left: auto;margin-right: auto">
     <div class="form-group">
       <label for="usr">First Name:</label>
-      <input type="text" class="form-control" id="fn" required="required">
+      <input type="text" class="form-control" id="fn" required>
     </div>
     <div class="form-group">
       <label for="usr">Middle Name:</label>
-      <input type="text" class="form-control" id="mn" required="required">
+      <input type="text" class="form-control" id="mn" required>
     </div>
     <div class="form-group">
       <label for="usr">Last Name:</label>
@@ -172,7 +248,7 @@
 
             <!-- Date input -->
             <label for="usr">Date of Birth</label>
-            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" required="required"/>
+            <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" required="required" />
 
 
           </div>
@@ -204,6 +280,7 @@
       <input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:50%;margin-right: auto;margin-left: auto"
         onclick="fun()" />
     </div>
+      <div id="errors"></div>
 
   </div>
   <div id="confirmation" style="height:50px;width:50%;margin-right: auto;margin-left: auto"></div>
