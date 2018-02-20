@@ -221,7 +221,8 @@
                     "<div class='col-md-4  text-left'>$ "+ rent +"</div>" +
                     "<div class='col-md-4  text-left'>$ "+ ta +"</div>" +
                     "</div>" +
-                    "</div><br/><br/>"+'<input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:20%;margin-right: auto;margin-left: auto" onclick="fun2()"/>'
+                    "</div><br/><br/>"+
+                    "<input type='button' class='btn btn-success' value='Confirm' style='height:50px;width:20%;margin-right: auto;margin-left: auto' onclick='fun2()'/>"
 
            /* document.getElementById("confirmation").innerHTML =
                     "<div class='confirm-box'><h1>Your details are as follows</h1><br/>" +
@@ -251,7 +252,6 @@
         function fun2() {
             URL = "http://0f39227b.ngrok.io/echo"
             datam = JSON.stringify(datam);
-
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
             xmlhttp.open("POST", URL, false);
