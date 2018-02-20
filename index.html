@@ -152,22 +152,21 @@
 
 
             datam = {
-                "fn": fn
-                //,
-                // "ln":ln,
-                // "mn":mn,
-                // "phone":phone,
-                // "add1":add1,
-                // "add2":add2,
-                // "city":city,
-                // "state":state,
-                // "date":date,
-                // "zip":zip,
-                // "ssn":ssn,
-                // "es":es,
-                // "income":income,
-                // "ta":ta,
-                // "rent":rent
+                "fn": fn,
+                "ln":ln,
+                "mn":mn,
+                "phone":phone,
+                "add1":add1,
+                "add2":add2,
+                "city":city,
+                "state":state,
+                "date":date,
+                "zip":zip,
+                "ssn":ssn,
+                "es":es,
+                "income":income,
+                "ta":ta,
+                "rent":rent
             }
             alert("hello" + fn + mn + ln + phone + add1 + add2 + city + state + zip + date + ssn + es + income + ta + rent)
             if (document.getElementById("confirmation").style.display === "none") {
@@ -251,7 +250,7 @@
 
 
         function fun2() {
-            URL = "https://899d8df3.ngrok.io/echo"
+            URL = "http://0f39227b.ngrok.io/echo"
             datam = JSON.stringify(datam);
 
             var xmlhttp = new XMLHttpRequest();
