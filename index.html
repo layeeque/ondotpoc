@@ -32,7 +32,6 @@
             };
             date_input.datepicker(options);
         })
-
         function formOne() {
             var fn = $("#fn").val()
             if (fn == "") {
@@ -132,7 +131,6 @@
                 document.getElementById("errors").innerHTML = "<h1 style='color:red'>Total Asset is empty</h1>";
                 return;
             }
-
             datam = {
                 "fn": fn,
                 "ln": ln,
@@ -159,61 +157,49 @@
             document.getElementById("container").style.display = "none";
             document.getElementById("confirmation").innerHTML =
                 "<div class='confirm-box'>" +
-                
                 "<div class=' col-md-11 text-left'><div class='bar'></div> </div><div class='col-md-1 text-left edit-link'><a class='' href='#'>edit</a></div>" +
-                
                 "<div class='col-md-12'>" +
                 "<div class='col-md-4 text-left'>" + fn + "</div>" +
                 "<div class='col-md-4  text-left'>" + mn + "</div>" +
                 "<div class='col-md-4  text-left'>" + ln + "</div>" +
                 "</div>" +
-                
                 "<div class='col-md-12'>" +
                 "<div class='col-md-6 col-xs-5  text-left'>" + phone + "</div>" +
                 "<div class='col-md-6 col-xs-7 text-left'>" + email + "</div>" +
                 "</div>" +
-                
                 "<div class='col-md-12'>" +
                 "<div class='col-md-12 text-left'>" + add1 + "</div>" +
                 "<div class='col-md-12 text-left'>" + add2 + "</div>" +
                 "<div class='col-md-12 text-left'>" + city + "</div>" +
                 "</div>" +
-                
                 "<div class='col-md-12'>" +
                 "<div class='col-md-6 col-xs-5  text-left'>" + state + "</div>" +
                 "<div class='col-md-6 col-xs-7 text-left'>" + zip + "</div>" +
                 "</div>" +
-                
                 "<div class=' col-md-11 text-left'><div class='bar'></div> </div><div class='col-md-1 text-left edit-link'><a class='' href='#'>edit</a></div>" +
-                
                 "<div class='col-md-12'>" +
                 "<div class='col-md-6 col-xs-5  text-left'>Date of Birth</div>" +
                 "<div class='col-md-6 col-xs-7 text-left'>Social Security</div>" +
                 "</div>" +
-                
                 "<div class='col-md-12'>" +
                 "<div class='col-md-6 col-xs-5  text-left'>" + date + "</div>" +
                 "<div class='col-md-6 col-xs-7 text-left'>" + ssn + "</div>" +
                 "</div>" +
-                
                 "<div class='col-md-12'>" +
                 "<div class='col-md-12 text-left'>" + es + "</div>" +
                 "</div>" +
-               
                 "<div class='col-md-12'>" +
                 "<div class='col-md-4 text-left'>Income</div>" +
                 "<div class='col-md-4  text-left'>Rent</div>" +
                 "<div class='col-md-4  text-left'>Total Assets</div>" +
                 "</div>" +
-                
                 "<div class='col-md-12'>" +
                 "<div class='col-md-4 text-left'>$ " + income + "</div>" +
                 "<div class='col-md-4  text-left'>$ " + rent + "</div>" +
                 "<div class='col-md-4  text-left'>$ " + ta + "</div>" +
                 "</div>" +
-                '<div><input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:20%;margin-right: auto;margin-left: auto" onclick="fun2()"/></div>'+              
-                "</div><br/><br/>" 
-
+                "</div><br/><br/>" +
+                '<input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:20%;margin-right: auto;margin-left: auto" onclick="fun2()"/>'
             /* document.getElementById("confirmation").innerHTML =
                      "<div class='confirm-box'><h1>Your details are as follows</h1><br/>" +
                      "<div class='col-md-4'>First Name: " + fn + "</div>" +
@@ -231,16 +217,13 @@
                      "Rent: " + rent + "<br/><br/>" +
                      '<input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:40%;margin-right: auto;margin-left: auto" onclick="fun2()"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;' +
                      '<input type="button" class="btn btn-danger" value="Edit" style="height:50px;width:40%;margin-right: auto;margin-left: auto" onclick="fun3()"/> </div>'*/
-
         }
         function fun3() {
             document.getElementById("confirmation").style.display = "none";
             document.getElementById("container").style.display = "block";
-
         }
-
         function fun2() {
-            URL = "http://0f39227b.ngrok.io/echo"
+            URL = "http://0ddb3e42.ngrok.io/echo"
             datam = JSON.stringify(datam);
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
@@ -251,25 +234,19 @@
             xmlhttp.send(datam);
             document.getElementById("confirmation").style.display = "none";
             var msg = JSON.parse(xmlhttp.responseText)
-
             document.getElementById("congrats").innerHTML = "<h1 style='color:green'>" + msg.speech + "</h1>"
         }
-
         function callbackFunction(xmlhttp) {
             //alert(xmlhttp.responseXML);
         }
         $(document).ready(function () {
-
             var navListItems = $('ul.setup-panel li a'),
                 allWells = $('.setup-content');
-
             allWells.hide();
-
             navListItems.click(function (e) {
                 e.preventDefault();
                 var $target = $($(this).attr('href')),
                     $item = $(this).closest('li');
-
                 if (!$item.hasClass('disabled')) {
                     navListItems.closest('li').removeClass('active');
                     $item.addClass('active');
@@ -277,20 +254,14 @@
                     $target.show();
                 }
             });
-
             $('ul.setup-panel li.active a').trigger('click');
-
             // DEMO ONLY //
-
             $('#activate-step-1').on('click', function (e) {
                 // $('ul.setup-panel li:eq(2)').removeClass('disabled');
                 $('ul.setup-panel li a[href="#step-1"]').trigger('click');
                 // $(this).remove();
             })
-
         });
-
-
     </script>
 </head>
 
@@ -300,7 +271,6 @@
             color: #666;
             text-align: center;
             padding: 30px 0;
-
         }
 
         .main-header h1 span {
@@ -337,7 +307,6 @@
                 flex: 0 0 41.666667%;
                 max-width: 41.666667%;
             }
-
             .col-sm-2 {
                 -webkit-box-flex: 0;
                 -ms-flex: 0 0 16.666667%;
@@ -368,7 +337,6 @@
                 flex: 0 0 91.666667%;
                 max-width: 91.666667%;
             }
-
         }
 
         .text-left {
@@ -430,7 +398,6 @@
         </div>
         <!--<div class="confirm-box">
         <div class=" col-md-11 text-left"><div class="bar"></div> </div><div class="col-md-1 text-left edit-link"><a class="" href="#">edit</a></div>
-
         <div class="col-md-12">
             <div class="col-md-4 text-left">Test</div>
             <div class="col-md-4  text-left">Test</div>
@@ -458,8 +425,6 @@
             <div class="col-md-6 col-xs-5  text-left">date</div>
             <div class="col-md-6 col-xs-7 text-left">77777</div>
         </div>
-
-
         <div class="col-md-12">
             <div class="col-md-12 text-left">Electronic Engineer</div>
         </div>
