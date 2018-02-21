@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ONDOT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
+    />
+    <script>
+           function enablediv() {
+                var k = formOne()         
+                if (k != 0) {
+                    toggleDisabled(document.getElementById("step1"))
+                    toggleDisabled(document.getElementById("step2"))
+                }
+            }
+        function preload() {
+            toggleDisabled(document.getElementById("step2"));
+        }
+        function toggleDisabled(el) {
+            try {
+                el.disabled = el.disabled ? false : true;
+            }
+            catch (E) {
+            }
+            if (el.childNodes && el.childNodes.length > 0) {
+                for (var x = 0; x < el.childNodes.length; x++) {
+                    toggleDisabled(el.childNodes[x]);
+                }
+            }
+        }
+        window.onload = preload
+
+        var datam
+        $(document).ready(function () {
+            var date_input = $('input[name="date"]'); //our date input has the name "date"
+            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+            var options = {
+                format: 'mm/dd/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
+        })
+
+        function formOne() {
+            var firstname = $("#firstname").val()
+            if (firstname == "") {
+                return 0;
+            }
+            var middlename = $("#middlename").val()
+            if (middlename == "") {
+                return 0;
+            }
+            var lastname = $("#lastname").val()
+            if (lastname == "") {
+                return 0;
+            }
+            var phone = $("#phone").val()
+            if (phone == "") {
+                return 0;
+            }
+            var email = $("#email").val()
+            if (email == "") {
+                return 0;
+            }
+            var add1 = $("#add1").val()
+            if (add1 == "") {
+                return 0;
+            }
+            var add2 = $("#add2").val()
+            if (add2 == "") {
+                return 0;
+            }
+            var city = $("#city").val()
+            if (city == "") {
+                return 0;
+            }
+            var state = $("#state").val()
+            if (state == "") {
+                return 0;
+            }
+            var zip = $("#zip").val()
+            if (zip == "") {
+                return 0;
+            }
+        }
+
+        function fun() {
+            document.getElementById("errors").innerHTML = "<h3></h3>";
+            var firstName = $("#firstname").val();
+            var middlename = $("#middlename").val();
+            var lastname = $("#lastname").val();
+            var date = $("#date").val();
+            var phone = $("#phone").val();
+            var email = $("#email").val();
+            var add1 = $("#add1").val();
+            var add2 = $("#add2").val();
+            var city = $("#city").val();
+            var state = $("#state").val();
+            var zip = $("#zip").val();
+            var date = $("#date").val()
+
+            var securityserviceno = $("#securityserviceno").val()
+            if (securityserviceno == "") {
+                document.getElementById("errors").innerHTML = "<h3 style='color:red'>SSN Name is empty</h3>";
+                return;
+            }
+            var employeestate = $("#employeestate").val()
+            if (employeestate == "") {
+                document.getElementById("errors").innerHTML = "<h3 style='color:red'>Employment status is empty</h3>";
+                return;
+            }
+            var income = $("#income").val()
+            if (income == "") {
+                document.getElementById("errors").innerHTML = "<h3 style='color:red'>Income is empty</h3>";
+                return;
+            }
+            var rent = $("#rent").val()
+            if (rent == "") {
+                document.getElementById("errors").innerHTML = "<h3 style='color:red'>Rent is empty</h3>";
+                return;
+            }
+            var totalassets = $("#totalassets").val()
+            if (totalassets == "") {
+                document.getElementById("errors").innerHTML = "<h3 style='color:red'>Total Asset is empty</h3>";
+                return;
+            }
+
+            datam = {
+                "First Name": firstName,
+                "Middle Name": middlename,
+                "Last Name": lastname,
+                "phone": phone,
+                "Address1": add1,
+                "Address2": add2,
+                "City": city,
+                "State": state,
+                "Date": date,
+                "Zip": zip,
+                "Security Service No": securityserviceno,
+                "Employee State": employeestate,
+                "Income": income,
+                "Total Assets": totalassets,
+                "Rent": rent
+            }
+            if (document.getElementById("confirmation").style.display === "none") {
+                document.getElementById("confirmation").style.display = "block";
+            }
+            $(".container").hide();
+            document.getElementById("errors").innerHTML = '';
+            document.getElementById("confirmation").innerHTML =
+                "<div class='confirm-box col-md-12 col-xs-12 col-sm-12 well'>" +
+
+                "<div class='col-md-11 text-left'><div class='bar'></div></div><div class='col-md-1 text-left edit-link'><a href='#'>edit</a></div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12'>" +
+                "<div class='col-md-4 col-xs-4 col-sm-4 text-left'>" + firstName + "</div>" +
+                "<div class='col-md-4 col-xs-4 col-sm-4 text-left'>" + middlename + "</div>" +
+                "<div class='col-md-4 col-xs-4 col-sm-4 text-left'>" + lastname + "</div>" +
+                "</div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12 well'>" +
+                "<div class='col-md-6 text-left'>" + phone + "</div>" +
+                "<div class='col-md-6 text-left'>" + email + "</div>" +
+                "</div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12 well'>" +
+                "<div class='col-md-6 text-left'>" + add1 + "</div>" +
+                "<div class='col-md-6 text-left'>" + add2 + "</div>" +
+                "</div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12 well'>" +
+                "<div class='col-md-12 text-left'>" + city + "</div>" +
+                "</div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12 well'>" +
+                "<div class='col-md-8 text-left'>" + state + "</div>" +
+                "<div class='col-md-4 text-left'>" + zip + "</div>" +
+                "</div>" +
+
+
+                "<div class=' col-md-11 text-left'><div class='bar'></div></div><div class='col-md-1 text-left edit-link'><a class='' href='#'>edit</a></div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12'>" +
+                "<div class='col-md-6 text-left'>DOB</div>" +
+                "<div class='col-md-6 text-left'>Social Security</div>" +
+                "</div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12'>" +
+                "<div class='col-md-6 text-left'>" + date + "</div>" +
+                "<div class='col-md-6 text-left'> " + securityserviceno + "</div>" +
+                "</div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12'>" +
+                "<div class='col-md-12 col-xs-12 col-sm-12 text-left'>" + employeestate + "</div>" +
+                "</div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12'>" +
+                "<div class='col-md-4 col-xs-4 col-sm-4 text-left'><label>Income</label></div>" +
+                "<div class='col-md-4 col-xs-4 col-sm-4 text-left'><label>Rent</label></div>" +
+                "<div class='col-md-4 col-xs-4 col-sm-4 text-left'><label>Total Assets</label></div>" +
+                "</div>" +
+
+                "<div class='col-md-12 col-xs-12 col-sm-12'>" +
+                "<div class='col-md-4 col-xs-4 col-sm-4 text-left'>" + income + "</div>" +
+                "<div class='col-md-4 col-xs-4 col-sm-4 text-left'>" + rent + "</div>" +
+                "<div class='col-md-4 col-xs-4 col-sm-4 text-left'>" + totalassets + "</div>" +
+                "</div>" +
+                "</div>" +
+
+                "<div><br/><input type='button' class='btn btn-success' value='Please Confirm' style='height:50px;width:100%;margin-right:auto;margin-left:auto' onclick='fun2()'/></div><br/><br/>"
+        }
+        function fun3() {
+            document.getElementById("confirmation").style.display = "none";
+            document.getElementById("container").style.display = "block";
+
+        }
+
+        function fun2() {
+            URL = "https://d38115a9.ngrok.io/echo"
+            datam = JSON.stringify(datam);
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+            xmlhttp.open("POST", URL, false);
+            xmlhttp.setRequestHeader("Content-Type", "application/json");
+            xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); //in prod, you should encrypt user name and password and provide encrypted keys here instead
+            xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
+            xmlhttp.send(datam);
+            document.getElementById("confirmation").style.display = "none";
+            var msg = JSON.parse(xmlhttp.responseText)
+
+            document.getElementById("congrats").innerHTML = "<h3 style='color:green'>" + msg.speech + "</h3>"
+        }
+
+        function callbackFunction(xmlhttp) {
+            //alert(xmlhttp.responseXML);
+        }
+        $(document).ready(function () {
+
+            var navListItems = $('ul.setup-panel li a'),
+                allWells = $('.setup-content');
+
+            allWells.hide();
+
+            navListItems.click(function (e) {
+                e.preventDefault();
+                var $target = $($(this).attr('href')),
+                    $item = $(this).closest('li');
+
+                if (!$item.hasClass('disabled')) {
+                    navListItems.closest('li').removeClass('active');
+                    $item.addClass('active');
+                    allWells.hide();
+                    $target.show();
+                }
+            });
+
+            $('ul.setup-panel li.active a').trigger('click');
+
+            // DEMO ONLY //
+
+            $('#activate-step-1').on('click', function (e) {
+                // $('ul.setup-panel li:eq(2)').removeClass('disabled');
+                $('ul.setup-panel li a[href="#step-1"]').trigger('click');
+                // $(this).remove();
+            })
+
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <style>
+        .main-header {
+            color: #666;
+            text-align: center;
+            padding: 30px 0;
+
+        }
+
+        .main-header h1 span {
+            border-bottom: 2px solid #9b9b9b;
+            padding-bottom: 10px;
+            font-size: 26px;
+            ;
+        }
+
+        .form-wizard-title {
+            color: rgba(255, 137, 23, 0.91);
+            font-size: 22px;
+            text-align: left;
+            margin-bottom: 10px;
+            margin-top: -10px;
+        }
+
+        .btn-primary {
+            background-color: rgba(255, 137, 23, 0.91);
+            border-color: rgba(255, 137, 23, 0.91);
+            ;
+        }
+
+        .btn {
+            background-color: rgba(255, 137, 23, 0.91);
+            border-color: rgba(255, 137, 23, 0.91);
+            ;
+        }
+
+        @media (min-width: 320px) {
+            .col-md-1 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 8.333333%;
+                flex: 0 0 8.333333%;
+                max-width: 8.333333%;
+            }
+            .col-sm-5 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 41.666667%;
+                flex: 0 0 41.666667%;
+                max-width: 41.666667%;
+            }
+
+            .col-sm-2 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 16.666667%;
+                flex: 0 0 16.666667%;
+                max-width: 16.666667%;
+            }
+            .col-md-6 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 50%;
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+            .col-md-4 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 33.333333%;
+                flex: 0 0 33.333333%;
+                max-width: 33.333333%;
+            }
+            .col-md-8 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 66.666667%;
+                flex: 0 0 66.666667%;
+                max-width: 66.666667%;
+            }
+            .col-md-11 {
+                -webkit-box-flex: 0;
+                -ms-flex: 0 0 91.666667%;
+                flex: 0 0 91.666667%;
+                max-width: 91.666667%;
+            }
+
+        }
+
+        .text-left {
+            float: left;
+            padding: 8px;
+            ;
+        }
+
+        .setup-content {
+            display: inherit;
+            float: left;
+        }
+
+        .confirm-box {
+            color: #7d7d7d;
+        }
+
+        .confirm-box .bar {
+            border: 5px solid #ccc;
+        }
+
+        .confirm-box .edit-link a:hover {
+            text-decoration: none
+        }
+
+        .confirm-box .edit-link a {
+            color: rgba(255, 137, 23, 0.91);
+        }
+
+        .confirm-box .edit-link {
+            margin: -7px 0 -7px -10px;
+        }
+    </style>
+
+    <div class="main-header col-md-12">
+        <h1>
+            <span>Ondot Credit Card Application</span>
+        </h1>
+    </div>
+
+    <div class="container">
+        <div>
+            <!--  Step1 Form Design -->
+            <div class="col-md-12 col-xs-12 col-sm-12 well">
+                <div class="form-wizard-title">
+                    Step 1 of 2 - Where you are
+                </div>
+                <div id="step1">
+                    <div class="form-row">
+                        <div class="form-group col-xs-5 col-sm-5">
+                            <input type="text" class="form-control" id="firstname" placeholder="First Name" onblur="enablediv()" required="required">
+                        </div>
+                        <div class="form-group  col-xs-2 col-sm-2">
+                            <input type="text" class="form-control" id="middlename" placeholder="MN"  onblur="enablediv()" required="required">
+                        </div>
+                        <div class="form-group col-xs-5 col-sm-5">
+                            <input type="text" class="form-control" id="lastname" placeholder="Last Name" onblur="enablediv()"  required="required">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" id="phone" placeholder="Phone" onblur="enablediv()"required="required">
+                        </div>
+                        <div class="form-group col-md-8">
+                            <input type="text" class="form-control" id="email" placeholder="Email Address" onblur="enablediv()" required="required">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control" id="add1" placeholder="Address1" onblur="enablediv()"  required="required">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control" id="add2" placeholder="Address2" onblur="enablediv()"  required="required">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <input type="text" class="form-control" id="city" placeholder="City" onblur="enablediv()" required="required">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                            <input type="text" class="form-control" id="state" placeholder="State" onblur="enablediv()" required="required">
+                        </div>
+                        <div class="form-group col-md-4">
+                            <input type="text" class="form-control" id="zip" placeholder="Zip" onblur="enablediv()" required="required">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--End of Step1 Form Design -->
+
+            <!-- From 2nd Design -->
+            <div class="col-md-12 col-xs-12 col-sm-12 well">
+                <br>
+                <div class="form-wizard-title" onselect="hideDiv()">
+                    Step 2 of 2 - Who you are
+                </div>
+
+                <div id="step2">
+                    <div class="form-row">
+                        <div class="bootstrap-iso col-md-12" style="padding: 0">
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6" style="padding: 0 5px;">
+                                <label for="date">Date of Birth</label>
+                                <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text" required="required" />
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6 col-xs-6" style="padding: 0 5px;">
+                                <label for="ssn">SSN:</label>
+                                <input type="text" class="form-control" id="securityserviceno" placeholder="XXX-XX-XXXX" required="required">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12 col-xs-12 col-sm-12">
+                            <label for="es">Employment Status:</label>
+                            <input type="text" class="form-control" id="employeestate" required="required">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-4 col-xs-4 col-sm-4">
+                            <label for="income">Income:</label>
+                            <input type="text" class="form-control" id="income" placeholder="$0.00" required="required">
+                        </div>
+
+                        <div class="form-group col-md-4 col-xs-4 col-sm-4">
+                            <label for="rent">Rent:</label>
+                            <input type="text" placeholder="$0.00" class="form-control" id="rent" required="required">
+                        </div>
+
+                        <div class="form-group col-md-4 col-xs-4 col-sm-4">
+                            <label for="ta">Total Assets:</label>
+                            <input type="text" class="form-control" id="totalassets" placeholder="$0.00" required="required">
+                        </div>
+                    </div>
+                    <div>
+                        <input type="button" class="btn btn-success" value="Confirm" style="height:50px;width:100%;margin-right:auto;margin-left: auto"
+                            onclick="fun()" />
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of 2nd Form Design -->
+            <div id="errors"></div>
+        </div>
+    </div>
+    <!--  End of Container Class -->
+    <div id="confirmation" style="height:50px;width:85%;margin-right:auto;margin-left:auto"></div>
+    <center>
+        <div id="congrats" style="height:50px;width:50%;margin-right:auto;margin-left:auto"></div>
+    </center>
+
+</body>
+
+</html>
