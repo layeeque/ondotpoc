@@ -23,8 +23,7 @@
         function congratulationMessageFb() {
             var url = window.location.href
             recipientID = url.split("=")[1]
-            alert(recipientID)
-                var data = JSON.stringify({
+                 var data = JSON.stringify({
                 "messaging_type": "UPDATE",
                 "recipient": {
                     "id": recipientID
@@ -34,7 +33,7 @@
                 }
             });
 
-            console.log(data)
+            alert(data)
             var xhr = new XMLHttpRequest();
             xhr.withCredentials = true;
             xhr.addEventListener("readystatechange", function () {
