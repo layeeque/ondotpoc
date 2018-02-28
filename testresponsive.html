@@ -23,29 +23,24 @@
         function congratulationMessageFb() {
             var url = window.location.href
             recipientID = url.split("=")[1]
-                 var data = JSON.stringify({
-                "messaging_type": "UPDATE",
-                "recipient": {
-                    "id": recipientID
+            
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://graph.facebook.com/v2.6/me/messages?access_token=EAAEQ9ToPqdEBAAWwk0V2R6dVOn2JYPtafkyd0wQfL0bwenF5jxQ96qz5Ee9AgCbvV6yJFowDz8QoZAwAj9H3np9vZAvBAOdp9N5X7MnjYAbtaYsOrj6rocjjTMGuZA7k2oOSsQyoDgWMiD2r9jcZBvBx5aX8xfcUqxbabId3LQZDZD",
+                "method": "POST",
+                "headers": {
+                "Content-Type": "application/json",
+                "Cache-Control": "no-cache",
+                "Postman-Token": "d09a75b7-fd0f-db5f-ba64-a04b74b8cb2e"
                 },
-                "message": {
-                    "text": "hello, world!"
+                "processData": false,
+                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":\""+recipientID+"\"\r\n },\r\n \"message\":{\r\n \"text\":\"hello, world!\"\r\n }\r\n}\r\n\r\n"
                 }
-            });
+               $.ajax(settings).done(function (response) {
+                console.log(response);
+                });
 
-            alert(data)
-            var xhr = new XMLHttpRequest();
-            xhr.withCredentials = true;
-            xhr.addEventListener("readystatechange", function () {
-                if (this.readyState === 4) {
-                    console.log(this.responseText);
-                }
-            });
-
-            xhr.open("POST", "https://graph.facebook.com/v2.6/me/messages?access_token=EAAEQ9ToPqdEBAAWwk0V2R6dVOn2JYPtafkyd0wQfL0bwenF5jxQ96qz5Ee9AgCbvV6yJFowDz8QoZAwAj9H3np9vZAvBAOdp9N5X7MnjYAbtaYsOrj6rocjjTMGuZA7k2oOSsQyoDgWMiD2r9jcZBvBx5aX8xfcUqxbabId3LQZDZD");
-            xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.setRequestHeader("Cache-Control", "no-cache");
-            xhr.send(data);
             close();
         }
 
