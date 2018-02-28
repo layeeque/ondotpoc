@@ -14,14 +14,13 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
     />
-   
-   
+      
     <script rel="javascript" type="text/javascript">
         var url, recipientID ;
         function congratulationMessageFb() {
@@ -39,7 +38,7 @@
                     
                 },
                 "processData": false,
-                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":\""+recipientID+"\"\r\n },\r\n \"message\":{\r\n \"text\":\"hello, world!\"\r\n }\r\n}\r\n\r\n"
+                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":\""+recipientID+"\"\r\n },\r\n \"message\":{\r\n \"text\":\"Congratulations,you are all set up.\"\r\n }\r\n}\r\n\r\n"
             }
     
             $.ajax(settings).done(function (response) {
@@ -281,34 +280,10 @@
             var middlename = $("#middlename").val();
             var lastname = $("#lastname").val();
 
-
-            // var settings = {
-            //     "async": true,
-            //     "crossDomain": true,
-            //     "url": "https://graph.facebook.com/v2.6/me/messages?access_token=EAAEQ9ToPqdEBAAWwk0V2R6dVOn2JYPtafkyd0wQfL0bwenF5jxQ96qz5Ee9AgCbvV6yJFowDz8QoZAwAj9H3np9vZAvBAOdp9N5X7MnjYAbtaYsOrj6rocjjTMGuZA7k2oOSsQyoDgWMiD2r9jcZBvBx5aX8xfcUqxbabId3LQZDZD",
-            //     "method": "POST",
-            //     "headers": {
-            //         "Content-Type": "application/json",
-            //         "Cache-Control": "no-cache",
-            //         "Access-Control-Allow-Origin": "*"
-            //     },
-            //     "processData": false,
-            //     "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":\"" + recipientID + "\"\r\n },\r\n \"message\":{\r\n \"text\":\"hello, world!\"\r\n }\r\n}\r\n\r\n",
-            // }
-
-            // document.getElementById("backbutton").style.display = "none"
-            // document.getElementById("cardHolderName").innerHTML = "<h4><strong>" + firstName + " " + middlename + " " + lastname + "</strong></h4>";
-            // URL = "https://8ceabbb8.ngrok.io/echo"
-            // datam = JSON.stringify(settings);
-            // var xmlhttp = new XMLHttpRequest();
-            // xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-            // xmlhttp.open("POST", URL, false);
-            // xmlhttp.setRequestHeader("Content-Type", "application/json");
-            // xmlhttp.setRequestHeader('Authorization', 'Basic ' + window.btoa('apiusername:apiuserpassword')); //in prod, you should encrypt user name and password and provide encrypted keys here instead
-            // xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
-            // xmlhttp.send(datam);
             document.getElementById('myPopup').style.display = "none";
             document.getElementById("confirmation").style.display = "none";
+            document.getElementById("backbutton").style.display = "none";
+            document.getElementById("cardHolderName").innerHTML = "<strong>" + firstName+ " " +middlename+ " "+lastname+"</strong>"
 
             // var msg = JSON.parse(xmlhttp.responseText)
             //document.getElementById("cardHolderName").innerHTML = "<label>" + firstname + "</label>" 
@@ -530,7 +505,10 @@
             width: 80%;
             margin: 0 auto;
             margin-top: 10%;
-            background-color: rgba(255, 137, 23, 0.91);
+            background-image: url("./images/card.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
         }
 
         .conf_msg {
@@ -678,6 +656,12 @@
             </div>
             <div style="overflow:auto;height:75%;margin-bottom:auto;margin-top:auto">
                 <p>
+                    <strong>Online Banking Agreement and Disclosure Sample-</strong>To Be Replaced with FI's Actual T&C Statement<br><br>
+                </p>
+                <p>In this Online Banking Agreeement and Disclosure the words "you","your" and "yours" mean each and evry one of you who registered for or who utilizes the Online Banking service.The ords "We","us","our" and "ABC" each means ABC Federal. "agreement and Disclosure" means this Online Banking Agreement and Disclosure.
+
+                </p>
+                <p>
                     <strong>Definitions:</strong> The following words and expressions shall have the corresponding meanings wherever
                     appropriate.
                 </p>
@@ -718,10 +702,15 @@
     </div>
     <div class="congrats" id="congrats">
         &nbsp;
-        <img src="./background_img.png" />
+        <img src="./images/background_img.png"/>
         <!-- Here is the div where we can add inputs-->
         <div class="conf_ip container">
+                <div>
+                        <img src="./images/logo.png" style="z-index:1;margin-left:3%;margin-top:1%;height:20%;width:50%" />
+        
+                    </div>
             <center>
+                <br>
                 <br>
                 <div>XXXX - XXXX - XXXX</div>
                 <br>
