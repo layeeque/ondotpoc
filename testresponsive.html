@@ -14,18 +14,20 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"
     />
-
-    <script type="text/javascript">
+   
+   
+    <script rel="javascript" type="text/javascript">
+        var url, recipientID ;
         function congratulationMessageFb() {
-            var url = window.location.href
-
-            recipientID = url.split("=")[1]
+             url = window.location.href
+             c = url.split("=")[1]
+            console.log("Inside congratulation")
             var settings = {
                 "async": true,
                 "crossDomain": true,
@@ -34,18 +36,15 @@
                 "headers": {
                     "Content-Type": "application/json",
                     "Cache-Control": "no-cache"
+                    
                 },
                 "processData": false,
-                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":\"" + recipientID + "\"\r\n },\r\n \"message\":{\r\n \"text\":\"hello, world!\"\r\n }\r\n}\r\n\r\n"
+                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":\""+recipientID+"\"\r\n },\r\n \"message\":{\r\n \"text\":\"hello, world!\"\r\n }\r\n}\r\n\r\n"
             }
-
-            alert(JSON.stringify(settings))
-            
+    
             $.ajax(settings).done(function (response) {
-                console.log(response);
+                console.log(response);  
             });
-
-            close();
         }
 
         function back() {
@@ -282,10 +281,25 @@
             var middlename = $("#middlename").val();
             var lastname = $("#lastname").val();
 
-            document.getElementById("backbutton").style.display = "none"
-            document.getElementById("cardHolderName").innerHTML = "<h4><strong>" + firstName + " " + middlename + " " + lastname + "</strong></h4>";
-            // URL = "https://df76601a.ngrok.io/echo"
-            // datam = JSON.stringify(datam);
+
+            // var settings = {
+            //     "async": true,
+            //     "crossDomain": true,
+            //     "url": "https://graph.facebook.com/v2.6/me/messages?access_token=EAAEQ9ToPqdEBAAWwk0V2R6dVOn2JYPtafkyd0wQfL0bwenF5jxQ96qz5Ee9AgCbvV6yJFowDz8QoZAwAj9H3np9vZAvBAOdp9N5X7MnjYAbtaYsOrj6rocjjTMGuZA7k2oOSsQyoDgWMiD2r9jcZBvBx5aX8xfcUqxbabId3LQZDZD",
+            //     "method": "POST",
+            //     "headers": {
+            //         "Content-Type": "application/json",
+            //         "Cache-Control": "no-cache",
+            //         "Access-Control-Allow-Origin": "*"
+            //     },
+            //     "processData": false,
+            //     "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":\"" + recipientID + "\"\r\n },\r\n \"message\":{\r\n \"text\":\"hello, world!\"\r\n }\r\n}\r\n\r\n",
+            // }
+
+            // document.getElementById("backbutton").style.display = "none"
+            // document.getElementById("cardHolderName").innerHTML = "<h4><strong>" + firstName + " " + middlename + " " + lastname + "</strong></h4>";
+            // URL = "https://8ceabbb8.ngrok.io/echo"
+            // datam = JSON.stringify(settings);
             // var xmlhttp = new XMLHttpRequest();
             // xmlhttp.onreadystatechange = callbackFunction(xmlhttp);
             // xmlhttp.open("POST", URL, false);
