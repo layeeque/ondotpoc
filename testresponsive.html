@@ -26,6 +26,8 @@
         function congratulationMessageFb() {
              url = window.location.href
              c = url.split("=")[1]
+             alert("url = "+url)
+             alert("c = "+c)
             
             var settings = {
                 "async": true,
@@ -44,7 +46,7 @@
                 console.log(response);  
             });
 
-            setTimeout( close,5000)
+            setTimeout( close,2000)
            
           
         }
