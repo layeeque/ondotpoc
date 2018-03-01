@@ -25,7 +25,7 @@
         var url, recipientID ;
         function congratulationMessageFb() {
              url = window.location.href
-             c = url.split("=")[1]
+             recipientID = url.split("=")[1]
              
             var settings = {
                 "async": true,
@@ -37,7 +37,7 @@
                     "Cache-Control": "no-cache"
                  },
                 "processData": false,
-                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":"+c+"\r\n },\r\n \"message\":{\r\n \"text\":\"Congratulations!, You are all set up.\"\r\n }\r\n}\r\n\r\n"
+                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":"+recipientID+"\r\n },\r\n \"message\":{\r\n \"text\":\"Congratulations!, You are all set up.\"\r\n }\r\n}\r\n\r\n"
             }
     
             $.ajax(settings).done(function (response) {
