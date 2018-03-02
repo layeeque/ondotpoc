@@ -297,8 +297,9 @@
                     "Cache-Control": "no-cache"
                  },
                 "processData": false,
-                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":"+recipientID+"\r\n },\r\n \"message\":{\r\n \"text\":\"Congratulations!, You are all set up.\"\r\n }\r\n}\r\n\r\n"
-            }
+                //"data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":"+recipientID+"\r\n },\r\n \"message\":{\r\n \"text\":\"Congratulations!, You are all set up.\"\r\n }\r\n}\r\n\r\n"
+                "data": "{\n \"messaging_type\": \"UPDATE\",\t\n \"recipient\":{\n   \"id\":"+recipientID+"\r\n },\n \"message\":{\n     \"attachment\":{\n     \"type\":\"template\",\n     \"payload\":{\n       \"template_type\":\"button\",\n       \"text\": \"You will receive an email with your user name, temporary password, and a link to the Ondot app. \\n\\nYou can begin spending today by adding your new card to your Apple Wallet.\",\n       \"buttons\": [\n         {\n           \"type\": \"postback\",\n           \"title\": \"Can I get the app now?\",\n           \"payload\": \"Can I get the app now?\"\n         }\n       ]\n     }\n   }\n }\n}"
+}            }
     
             $.ajax(settings).done(function (response) {
                 console.log(response);  
