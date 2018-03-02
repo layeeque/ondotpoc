@@ -22,30 +22,30 @@
     />
       
     <script rel="javascript" type="text/javascript">
-        var url, recipientID ;
+       
         function congratulationMessageFb() {
-             url = window.location.href
-             recipientID = url.split("=")[1]
-             
-            var settings = {
-                "async": true,
-                "crossDomain": true,
-                "url": "https://graph.facebook.com/v2.6/me/messages?access_token=EAAEQ9ToPqdEBAAWwk0V2R6dVOn2JYPtafkyd0wQfL0bwenF5jxQ96qz5Ee9AgCbvV6yJFowDz8QoZAwAj9H3np9vZAvBAOdp9N5X7MnjYAbtaYsOrj6rocjjTMGuZA7k2oOSsQyoDgWMiD2r9jcZBvBx5aX8xfcUqxbabId3LQZDZD",
-                "method": "POST",
-                "headers": {
-                    "Content-Type": "application/json",
-                    "Cache-Control": "no-cache"
-                 },
-                "processData": false,
-                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":"+recipientID+"\r\n },\r\n \"message\":{\r\n \"text\":\"Congratulations!, You are all set up.\"\r\n }\r\n}\r\n\r\n"
-            }
-    
-            $.ajax(settings).done(function (response) {
-                console.log(response);  
-            });
+            close();
 
-            setTimeout( close,2000)
-           
+            // var url, recipientID ;
+            //  url = window.location.href
+            //  recipientID = url.split("=")[1]
+             
+            // var settings = {
+            //     "async": true,
+            //     "crossDomain": true,
+            //     "url": "https://graph.facebook.com/v2.6/me/messages?access_token=EAAEQ9ToPqdEBAAWwk0V2R6dVOn2JYPtafkyd0wQfL0bwenF5jxQ96qz5Ee9AgCbvV6yJFowDz8QoZAwAj9H3np9vZAvBAOdp9N5X7MnjYAbtaYsOrj6rocjjTMGuZA7k2oOSsQyoDgWMiD2r9jcZBvBx5aX8xfcUqxbabId3LQZDZD",
+            //     "method": "POST",
+            //     "headers": {
+            //         "Content-Type": "application/json",
+            //         "Cache-Control": "no-cache"
+            //      },
+            //     "processData": false,
+            //     "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":"+recipientID+"\r\n },\r\n \"message\":{\r\n \"text\":\"Congratulations!, You are all set up.\"\r\n }\r\n}\r\n\r\n"
+            // }
+    
+            // $.ajax(settings).done(function (response) {
+            //     console.log(response);  
+            // });        
           
         }
 
@@ -283,9 +283,32 @@
             var middlename = $("#middlename").val();
             var lastname = $("#lastname").val();
 
+            var url, recipientID ;
+             url = window.location.href
+             recipientID = url.split("=")[1]
+             
+            var settings = {
+                "async": true,
+                "crossDomain": true,
+                "url": "https://graph.facebook.com/v2.6/me/messages?access_token=EAAEQ9ToPqdEBAAWwk0V2R6dVOn2JYPtafkyd0wQfL0bwenF5jxQ96qz5Ee9AgCbvV6yJFowDz8QoZAwAj9H3np9vZAvBAOdp9N5X7MnjYAbtaYsOrj6rocjjTMGuZA7k2oOSsQyoDgWMiD2r9jcZBvBx5aX8xfcUqxbabId3LQZDZD",
+                "method": "POST",
+                "headers": {
+                    "Content-Type": "application/json",
+                    "Cache-Control": "no-cache"
+                 },
+                "processData": false,
+                "data": "{\r\n \"messaging_type\": \"UPDATE\",\t\r\n \"recipient\":{\r\n \"id\":"+recipientID+"\r\n },\r\n \"message\":{\r\n \"text\":\"Congratulations!, You are all set up.\"\r\n }\r\n}\r\n\r\n"
+            }
+    
+            $.ajax(settings).done(function (response) {
+                console.log(response);  
+            });
+
+                      
+
             document.getElementById('myPopup').style.display = "none";
             document.getElementById("confirmation").style.display = "none";
-            document.getElementById("backbutton").style.display = "none";
+            // document.getElementById("backbutton").style.display = "none";
             document.getElementById("cardHolderName").innerHTML = "<strong>" + firstName+ " " +middlename+ " "+lastname+"</strong>"
 
             // var msg = JSON.parse(xmlhttp.responseText)
@@ -343,15 +366,15 @@
         }
 
         .main-header h1  {
-            border-top: 2px solid rgba(255, 137, 23, 0.91);
-            padding-top: 20px;
+            /* border-top: 2px solid rgba(255, 137, 23, 0.91);
+            padding-top: 20px; */
             padding-bottom: 10px;
             font-size: 26px;
             ;
         }
 
         .form-wizard-title {
-            color: rgba(255, 137, 23, 0.91);
+            color: #0480f3;
             font-size: 22px;
             text-align: left;
             margin-bottom: 10px;
@@ -359,14 +382,14 @@
         }
 
         .btn-primary {
-            background-color: rgba(255, 137, 23, 0.91);
-            border-color: rgba(255, 137, 23, 0.91);
+            background-color:#0480f3;
+            border-color: #0480f3;
             ;
         }
 
         .btn {
-            background-color: rgba(255, 137, 23, 0.91);
-            border-color: rgba(255, 137, 23, 0.91);
+            background-color:#0480f3;
+            border-color: #0480f3;
             color: whitesmoke;
         }
 
@@ -441,7 +464,7 @@
         }
 
         .confirm-box .edit-link a {
-            color: rgba(255, 137, 23, 0.91);
+            color: #0480f3;
         }
 
         .confirm-box .edit-link {
@@ -521,13 +544,13 @@
         }
     </style>
 
-    <div class="container" id="backbutton">
+    <!-- <div class="container" id="backbutton">
         <input type="button" class="btn" value="Back" style="background:none;border:none;color:rgba(255, 137, 23, 0.91)" onclick="back()"
         />
-    </div>
+    </div> -->
     <div class="main-header col-md-12">
         <h1>
-            <div style="text-align: center;font-size:23px;"><span style="border-bottom: 2px solid #9b9b9b; padding-bottom: 9px;">Credit Card Application&nbsp;&nbsp;<img src="./images/lock.png" style="padding-bottom:10px;"/></span> </div>
+            <div class="container"><span><div  style="border-bottom: 2px solid #9b9b9b; padding-bottom: 9px">Card Application<img src="./images/lock.png" style="padding-bottom:10px;position:absolute;right:10%"/></div></span></div>
             
         </h1>
     </div>
@@ -537,7 +560,7 @@
             <!--  Step1 Form Design -->
             <div class="col-md-12 col-xs-12 col-sm-12 well">
                 <div class="form-wizard-title">
-                    Step 1 of 2 - Where you are
+                    Step 1 of 2 - Getting to know you
                 </div>
                 <div id="step1">
                     <div class="form-row">
@@ -591,7 +614,7 @@
             <div class="col-md-12 col-xs-12 col-sm-12 well">
                 <br>
                 <div class="form-wizard-title" onselect="hideDiv()">
-                    Step 2 of 2 - Who you are
+                    Step 2 of 2 - More details
                 </div>
 
                 <div id="step2">
@@ -697,7 +720,7 @@
             <div>
                 <center>
                     <h4>
-                        <label style="color:rgba(255, 137, 23, 0.91);margin-bottom:auto;margin-top:auto" onclick="fun2()"> I Agree </label>
+                        <label style="color:#0480f3;margin-bottom:auto;margin-top:auto" onclick="fun2()"> I Agree </label>
                     </h4>
                 </center>
             </div>
@@ -729,17 +752,19 @@
         </div>
         </br>
         </br>
-        <div class="conf_msg container">
+        <div class="conf_msg container" style="font-size: 20px">
             <center>
-                <h3>
-                    Congratulations! Your Card Has been approved. Click Continue to install the Ondot App and begin spending today.
-                </h3>
+                
+                   <strong>Congratulations!</strong>  Your Card has been approved.Login to the App to begin spending today.
+                    <br> <br> 
+                    Your Ondot <strong>Username is your email</strong> and your <strong> password is L3r0yj3nK1n5. </strong>This will also be emailed to you.
+                
             </center>
             <br>
         </div>
 
         <div class="container">
-            <input type="button" class="btn" value="Confirm" style="height:50px;width:100%;border-top: 2px solid rgba(255, 137, 23, 0.91);"
+            <input type="button" class="btn" value="Confirm" style="height:50px;width:100%;border-top: 2px solid #0480f3;"
                 onclick="congratulationMessageFb()" />
         </div>
     </div>
